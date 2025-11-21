@@ -6,7 +6,18 @@ import packageJson from "./package.json" with { type: "json" }
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-
+  resolve: {
+    alias: {
+      assets: path.resolve(__dirname, "src/assets"),
+      Components: path.resolve(__dirname, "src/Components"),
+      homeworks: path.resolve(__dirname, "src/homeworks"),
+      lessons: path.resolve(__dirname, "src/lessons"),
+      styles: path.resolve(__dirname, "src/styles"),
+      pages: path.resolve(__dirname, "src/pages"),
+      routes: path.resolve(__dirname, "src/routes"),
+      store: path.resolve(__dirname, "src/store"),
+    },
+  },
   server: {
     open: true,
   },
