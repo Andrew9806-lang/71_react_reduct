@@ -19,11 +19,14 @@ export const likeSlice = createAppSlice({
         state.like=0
         state.dislike=0
     })
+    // resetResults: create.reducer(() => feedbackInitialState),
+    // tut  prosto verneli sostoyanie iznachalnoe
   }),
   selectors: {
     likeValue: (state: LikeStateSlice) => state.like,
     dislikeValue: (state: LikeStateSlice) => state.dislike,
   },
+//   FeedBackData:(state)=> state
 })
 
 export const LikeAction=likeSlice.actions;
