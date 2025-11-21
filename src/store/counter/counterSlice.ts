@@ -17,7 +17,8 @@ export const counterSlice = createAppSlice({
     reducers:create =>({
         // create eto kluch
         plus:create.reducer((state:CounterStateSLice)=>{state.count= state.count +1}),
-        // 1 naimenovanie reducera , 2 parametr i ego tipisaciya  , potom parametr i counterInitinalState to est izmeneniya 
+        // 1 naimenovanie reducera , 2 parametr i ego tipisaciya  , potom parametr i counterInitinalState to est izmeneniya
+        // vizivaetsya cherez dispatch  
         minus:create.reducer((state:CounterStateSLice)=>{state.count=state.count -1}),
     }),
     // shag 6 sozdaem selectori , kotorie pozvolyayut zabrat dannie iz state komponenta 
