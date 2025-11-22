@@ -1,9 +1,12 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { counterSlice } from "./counter/counterSlice"
+
+import { randomJokesSlice } from "../redux/RandomJokes/RandomJokesSlice"
+import { counterSlice } from "../redux/counter/counterSlice"
+
 // 8 shag peredacha slice v combain slice
-const rootReducer = combineSlices(counterSlice)
+const rootReducer = combineSlices(counterSlice, randomJokesSlice)
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 

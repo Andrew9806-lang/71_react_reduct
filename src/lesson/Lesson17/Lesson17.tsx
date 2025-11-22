@@ -1,23 +1,23 @@
 import Counter from "Components/Counter/Counter"
 import { Lesson17Wrapper } from "./styles"
-//9 . Importirovat hook dlya dispatcha(useAppDispatch,useAppSelector) i polucheniya dannih 
-import { useAppDispatch,useAppSelector } from "store/hooks"
+//9 . Importirovat hook dlya dispatcha(useAppDispatch,useAppSelector) i polucheniya dannih
+import { useAppDispatch, useAppSelector } from "store/hooks"
 // 10 shag . importiruem action i selectori iz faila so slice
-import { counterActions,counterSelectors } from "store/counter/counterSlice"
+import { counterActions, counterSelectors } from "redux/counter/counterSlice"
 
 function Lesson17() {
-  //11. poluchit  funkciyu dispatch kotoruyu vozvrashaet hook useAppDispatch 
-  const dispatch = useAppDispatch();
-  //12  zabiraem znacheniya countera iz store , iz selectora kotoruyu mi sozdali v selectore v counter slice 
+  //11. poluchit  funkciyu dispatch kotoruyu vozvrashaet hook useAppDispatch
+  const dispatch = useAppDispatch()
+  //12  zabiraem znacheniya countera iz store , iz selectora kotoruyu mi sozdali v selectore v counter slice
   // useAppSelector otvechaet za vizov selectora
   const counter = useAppSelector(counterSelectors.counterValue)
-  //13 vizivaem dispatch i peredaem v nego vizov action 
+  //13 vizivaem dispatch i peredaem v nego vizov action
   // vizov dispatcha nuzhno delat vnutri funkcii kotoraya srabativaet pri nazhatii knopki ili trigera
-  const onPlus=()=>{
-    dispatch(counterActions.plus())
+  const onPlus = () => {
+    dispatch(counterActions.plus(1))
   }
-   const onMinus=()=>{
-    dispatch(counterActions.minus())
+  const onMinus = () => {
+    dispatch(counterActions.minus(1))
   }
   return (
     <Lesson17Wrapper>

@@ -1,6 +1,7 @@
 // 1. Импортируем функцию, с помощью которой создаём slice
 import { createAppSlice } from "store/createAppSlice";
 import { CounterStateSLice } from "./type";
+import { PayloadAction } from "@reduxjs/toolkit";
 // 2. Создаём слайс для кайнтера с помощью вызова функции createAppSlice,
 // в которую передаём обект настройки
 const counterInitialState:CounterStateSLice ={
@@ -16,9 +17,11 @@ export const counterSlice = createAppSlice({
     //izmeneniya informacii)
     reducers:create =>({
         // create eto kluch
-        plus:create.reducer((state:CounterStateSLice)=>{state.count= state.count +1}),
+        plus:create.reducer((state:CounterStateSLice,action:PayloadAction<number>)=>{state.count + action.payload}),
         // 1 naimenovanie reducera , 2 parametr i ego tipisaciya  , potom parametr i counterInitinalState to est izmeneniya 
-        minus:create.reducer((state:CounterStateSLice)=>{state.count=state.count -1}),
+        minus:create.reducer((state:CounterStateSLice ,action:PayloadAction<number>)=>{state.count - action.payload}),
+        // hranit znachenie object payload to chto peredadim cherez dispatch  on tipisiruetsya kak PayLOadAction
+        //i tut cherez generic peredaem emu type 
     }),
     // shag 6 sozdaem selectori , kotorie pozvolyayut zabrat dannie iz state komponenta 
     selectors:{
