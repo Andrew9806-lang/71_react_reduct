@@ -1,33 +1,27 @@
 import { createAppSlice } from "store/createAppSlice"
-import { LikeStateSlice } from "./type"
+import { FeedbackSliceState } from "./type"
 
-export const likeInitialState: LikeStateSlice = {
-  like: 0,
-  dislike:0,
+const feedbackInitialState: FeedbackSliceState = {
+  likeCount: 0,
+  dislikeCount: 0,
 }
-export const likeSlice = createAppSlice({
-  name: "LIKE",
-  initialState: likeInitialState,
+
+export const feedbackSlice = createAppSlice({
+  name: "FEEDBACK",
+  initialState: feedbackInitialState,
   reducers: create => ({
-    like: create.reducer((state: LikeStateSlice) => {
-      state.like = state.like + 1
+    addLike: create.reducer((state: FeedbackSliceState) => {
+      state.likeCount = state.likeCount + 1
     }),
-    dislike: create.reducer((state: LikeStateSlice) => {
-      state.dislike = state.dislike + 1
+    addDislike: create.reducer((state: FeedbackSliceState) => {
+      state.dislikeCount = state.dislikeCount + 1
     }),
-    reset:create.reducer((state:LikeStateSlice)=>{
-        state.like=0
-        state.dislike=0
-    })
-    // resetResults: create.reducer(() => feedbackInitialState),
-    // tut  prosto verneli sostoyanie iznachalnoe
+    resetResults: create.reducer(() => feedbackInitialState),
   }),
   selectors: {
-    likeValue: (state: LikeStateSlice) => state.like,
-    dislikeValue: (state: LikeStateSlice) => state.dislike,
+    feedbackData: (state: FeedbackSliceState) => state,
   },
-//   FeedBackData:(state)=> state
 })
 
-export const LikeAction=likeSlice.actions;
-export const likeSelectors=likeSlice.selectors;
+export const feedbackActions = feedbackSlice.actions;
+export const feedbackSelectors = feedbackSlice.selectors;

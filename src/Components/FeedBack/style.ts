@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const FeedbackContainer=styled.div`
+export const FeedbackContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -10,11 +10,11 @@ export const FeedbackContainer=styled.div`
   border-radius: 20px;
 `
 
-export const FeedbackResultsContainer =styled.div`
+export const FeedbackResultsContainer = styled.div`
   display: flex;
   gap: 20px;
   width: 100%;
-`
+  `
 
 export const LikeDislikeContainer = styled.div`
   display: flex;

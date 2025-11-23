@@ -1,32 +1,49 @@
+import { useAppDispatch, useAppSelector } from "store/hooks"
 import Button from "../Button/Button"
+
 import {
   FeedbackContainer,
   FeedbackResultsContainer,
   LikeDislikeContainer,
   Result,
 } from "./style"
-import { FeedabackTypes } from "./type"
+import {
+  feedbackActions,
+  feedbackSelectors,
+} from "store/feedback/feedbackSlice"
 
-function Feedback({
-  like,
-  dislike,
-  addLike,
-  addDislike,
-  reset,
-}: FeedabackTypes) {
+function Feedback() {
+  const { likeCount, dislikeCount } = useAppSelector(
+feedbackSelectors.feedbackData,
+  )
+
+  const dispatch = useAppDispatch()
+
+  const addLike = () => {
+    dispatch(feedbackActions.addLike())
+  }
+
+  const addDislike = () => {
+    dispatch(feedbackActions.addDislike())
+  }
+
+  const resetResults = () => {
+    dispatch(feedbackActions.resetResults())
+  }
+
   return (
     <FeedbackContainer>
       <FeedbackResultsContainer>
         <LikeDislikeContainer>
-          <Result>{like}</Result>
+          <Result>{likeCount}</Result>
           <Button name="LIKE" onClick={addLike} />
         </LikeDislikeContainer>
         <LikeDislikeContainer>
-          <Result>{dislike}</Result>
+          <Result>{dislikeCount}</Result>
           <Button name="DISLIKE" onClick={addDislike} />
         </LikeDislikeContainer>
       </FeedbackResultsContainer>
-      <Button name="RESET RESULTS" onClick={reset} />
+      <Button name="RESET RESULTS" onClick={resetResults} />
     </FeedbackContainer>
   )
 }

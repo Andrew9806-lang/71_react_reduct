@@ -1,3 +1,3 @@
-export interface CounterStateSLice{
-    count:number
+export interface CounterStateSlice {
+  count: number
 }

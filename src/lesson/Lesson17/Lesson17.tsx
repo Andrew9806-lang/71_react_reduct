@@ -1,30 +1,37 @@
-import Counter from "Components/Counter/Counter"
+
 import { Lesson17Wrapper } from "./styles"
-//9 . Importirovat hook dlya dispatcha(useAppDispatch,useAppSelector) i polucheniya dannih 
-import { useAppDispatch,useAppSelector } from "store/hooks"
-// 10 shag . importiruem action i selectori iz faila so slice
-import { counterActions,counterSelectors } from "store/counter/counterSlice"
+// 9. Импортируем хуки для диспатча(useAppDispatch) и получения данных(useAppSelector)
+import { useAppDispatch, useAppSelector } from "store/hooks"
+// 10. Импортируем экшены и селекторы из файла со слайсом
+import { counterActions, counterSelectors } from "store/counter/counterSlice"
+import Counter from "Components/Counter/Counter"
 
 function Lesson17() {
-  //11. poluchit  funkciyu dispatch kotoruyu vozvrashaet hook useAppDispatch 
-  const dispatch = useAppDispatch();
-  //12  zabiraem znacheniya countera iz store , iz selectora kotoruyu mi sozdali v selectore v counter slice 
-  // useAppSelector otvechaet za vizov selectora
+  // 11. Получанием функцию dispatch, которую возвращает хук useAppDispatch
+  const dispatch = useAppDispatch()
+
+  // 12. Забираем значение каунтера из store
   const counter = useAppSelector(counterSelectors.counterValue)
-  //13 vizivaem dispatch i peredaem v nego vizov action 
-  // vizov dispatcha nuzhno delat vnutri funkcii kotoraya srabativaet pri nazhatii knopki ili trigera
-  const onPlus=()=>{
-    dispatch(counterActions.plus())
+
+  // 13. Вызываем dispatch и передаём в него вызов необходимых экшенов.
+  // Вызов диспатча нужно делать внутри функции, которая срабатывает при клике кнопку
+  const onPlus = () => {
+    dispatch(counterActions.plus(4))
   }
-   const onMinus=()=>{
-    dispatch(counterActions.minus())
+
+  const onMinus = () => {
+    dispatch(counterActions.minus(5))
   }
+
   return (
     <Lesson17Wrapper>
-      <Counter counter={counter} onPlusClick={onPlus} onMinusClick={onMinus} />
-      {/* counter dolzhen bit iz selectora useAppSelector  */}
+      <Counter
+        counter={counter}
+        onPlusClick={onPlus}
+        onMinusClick={onMinus}
+      />
     </Lesson17Wrapper>
   )
 }
 
-export default Lesson17
+export default Lesson17;
